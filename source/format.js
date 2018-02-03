@@ -8,13 +8,13 @@
 	* @return {Array} - Массив, определяет размер каждой колонки
 */
 const findLength = function(input, columns) {
-    let columnsLength = [];
-    for(let i = 0; i < input.length; i++) {
-        const len = String(input[i]).length;
-        const col = i % columns;
-        (columnsLength[col] >= len) ? '' : columnsLength[col] = len;
-    }
-    return columnsLength;
+	let columnsLength = [];
+	for(let i = 0; i < input.length; i++) {
+		const len = String(input[i]).length;
+		const col = i % columns;
+		(columnsLength[col] >= len) ? '' : columnsLength[col] = len;
+	}
+	return columnsLength;
 }
 
 /**
@@ -26,14 +26,14 @@ const findLength = function(input, columns) {
 	* @return {string} - Элемент, дополненный пробелами
 */
 const addSpaces = function(data, requiredLength, notFirst) {
-    const needSpaces = requiredLength - data.length;
-    if(notFirst) {
-        data = ' ' + data;
-    }
-    for(let i = 0; i < needSpaces; i++) {
-        data = ' ' + data;
-    }
-    return data;
+	const needSpaces = requiredLength - data.length;
+	if(notFirst) {
+		data = ' ' + data;
+	}
+	for(let i = 0; i < needSpaces; i++) {
+		data = ' ' + data;
+	}
+	return data;
 }
 
 /**
@@ -44,13 +44,13 @@ const addSpaces = function(data, requiredLength, notFirst) {
 	* @return {string} - Отформатированная строка
 */
 const format = function(input, columns) {
-    const columnsLength = findLength(input, columns);
-    let output = '';	
+	const columnsLength = findLength(input, columns);
+	let output = '';	
 	
-    for(let i = 0; i < input.length; i++) {
-        const col = i % columns;
-        output += addSpaces(String(input[i]), columnsLength[col], col > 0);
-        (col == columns - 1 && i < input.length -1) ? output += '\n' : '';
-    }
-    return output;
+	for(let i = 0; i < input.length; i++) {
+		const col = i % columns;
+		output += addSpaces(String(input[i]), columnsLength[col], col > 0);
+		(col == columns - 1 && i < input.length -1) ? output += '\n' : '';
+	}
+	return output;
 }
